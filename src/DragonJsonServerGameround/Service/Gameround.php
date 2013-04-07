@@ -15,6 +15,7 @@ namespace DragonJsonServerGameround\Service;
 class Gameround
 {
 	use \DragonJsonServer\ServiceManagerTrait;
+	use \DragonJsonServer\EventManagerTrait;
 	use \DragonJsonServerDoctrine\EntityManagerTrait;
 	
     /**
@@ -41,6 +42,11 @@ class Gameround
 				->setBot($bot);
 			$entityManager->persist($gameround);
 			$entityManager->flush();
+			$this->getEventManager()->trigger(
+				(new \DragonJsonServerGameround\Event\CreateGameround())
+					->setTarget($this)
+					->setGameround($gameround)
+			);
 		}
 		return $gameround;
 	}
