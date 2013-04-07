@@ -1,6 +1,6 @@
 {
     "name": "dragonprojects/dragonjsonservergameround",
-    "description": "Extension for DragonJsonServer to handle gamerounds",
+    "description": "Erweiterung für den DragonJsonServer zur Verwaltung von Spielrunden",
     "license": "BSD-3-Clause",
     "authors": [
         {
