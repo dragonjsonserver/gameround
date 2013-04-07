@@ -50,4 +50,21 @@ class Gameround
 		}
 		return $gameround;
 	}
+	
+	/**
+	 * Gibt die Spielrunde zur übergebenen GameroundID zurück
+	 * @param integer $gameround_id
+	 * @return \DragonJsonServerGameround\Entity\Gameround
+     * @throws \DragonJsonServer\Exception
+	 */
+	public function getGameroundByGameroundId($gameround_id)
+	{
+		$entityManager = $this->getEntityManager();
+
+		$gameround = $entityManager->find('\DragonJsonServerGameround\Entity\Gameround', $gameround_id);
+		if (null === $gameround) {
+			throw new \DragonJsonServer\Exception('incorrect gameround_id', ['gameround_id' => $gameround_id]);
+		}
+		return $gameround;
+	}
 }
