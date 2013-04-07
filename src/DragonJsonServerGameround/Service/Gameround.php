@@ -63,7 +63,7 @@ class Gameround
 
 		$gameround = $entityManager->find('\DragonJsonServerGameround\Entity\Gameround', $gameround_id);
 		if (null === $gameround) {
-			throw new \DragonJsonServer\Exception('incorrect gameround_id', ['gameround_id' => $gameround_id]);
+			throw new \DragonJsonServer\Exception('invalid gameround_id', ['gameround_id' => $gameround_id]);
 		}
 		return $gameround;
 	}
