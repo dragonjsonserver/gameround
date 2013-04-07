@@ -20,7 +20,7 @@ class CreateGameround extends \Zend\EventManager\Event
 	protected $name = 'creategameround';
 
     /**
-     * Setzt die Spielrunde
+     * Setzt die Spielrunde die erstellt wurde
      * @param \DragonJsonServerGameround\Entity\Gameround $gameround
      * @return CreateGameround
      */
@@ -31,7 +31,7 @@ class CreateGameround extends \Zend\EventManager\Event
     }
 
     /**
-     * Gibt die Spielrunde zurück
+     * Gibt die Spielrunde die erstellt wurde zurück
      * @return \DragonJsonServerGameround\Entity\Gameround
      */
     public function getGameround()
