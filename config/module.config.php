@@ -15,7 +15,7 @@ return [
 		'languages' => [],
 	],
 	'deviceplatforms' => [
-		'bot' => [ 'bot_id' ],
+		'bot' => ['bot_id'],
 	],
     'apiclasses' => [
         '\DragonJsonServerGameround\Api\Gameround' => 'Gameround',
