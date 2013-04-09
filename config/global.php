@@ -11,7 +11,7 @@
  * @return array
  */
 return [
-	'gameround' => [
+	'dragonjsonservergameround' => [
 		'languages' => ['%language%', '%language%'],
 	],
 ];

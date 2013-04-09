@@ -29,8 +29,8 @@ class Gameround
 		$entityManager = $this->getEntityManager();
 
 		if (null !== $language) {
-			$configGameround = $this->getServiceManager()->get('Config')['gameround'];
-			if (!in_array($language, $configGameround['languages'])) {
+			$languages = $this->getServiceManager()->get('Config')['dragonjsonservergameround']['languages'];
+			if (!in_array($language, $languages)) {
 				$language = null;
 			}
 		}

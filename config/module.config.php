@@ -11,14 +11,18 @@
  * @return array
  */
 return [
-	'gameround' => [
+	'dragonjsonservergameround' => [
 		'languages' => [],
 	],
-	'deviceplatforms' => [
-		'bot' => ['bot_id'],
+	'dragonjsonserverdevice' => [
+		'deviceplatforms' => [
+			'bot' => ['bot_id'],
+		],
 	],
-    'apiclasses' => [
-        '\DragonJsonServerGameround\Api\Gameround' => 'Gameround',
+	'dragonjsonserver' => [
+	    'apiclasses' => [
+	        '\DragonJsonServerGameround\Api\Gameround' => 'Gameround',
+	    ],
     ],
 	'service_manager' => [
 		'invokables' => [
