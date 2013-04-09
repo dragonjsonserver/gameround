@@ -40,13 +40,15 @@ class Gameround
 			$gameround = (new \DragonJsonServerGameround\Entity\Gameround())
 				->setLanguage($language)
 				->setBot($bot);
-			$entityManager->persist($gameround);
-			$entityManager->flush();
-			$this->getEventManager()->trigger(
-				(new \DragonJsonServerGameround\Event\CreateGameround())
-					->setTarget($this)
-					->setGameround($gameround)
-			);
+			$this->getServiceManager()->get('Doctrine')->transactional(function ($entityManager) use ($gameround) {
+				$entityManager->persist($gameround);
+				$entityManager->flush();
+				$this->getEventManager()->trigger(
+					(new \DragonJsonServerGameround\Event\CreateGameround())
+						->setTarget($this)
+						->setGameround($gameround)
+				);
+			});
 		}
 		return $gameround;
 	}
