@@ -15,7 +15,8 @@
         "php": ">=5.4.0",
         "zendframework/zendframework": "2.*",
         "dragonprojects/dragonjsonserver": "dev-master",
-        "dragonprojects/dragonjsonserverdoctrine": "dev-master"
+        "dragonprojects/dragonjsonserverdoctrine": "dev-master",
+        "dragonprojects/dragonjsonservertickevent": "dev-master"
     },
     "autoload": {
         "psr-0": {
