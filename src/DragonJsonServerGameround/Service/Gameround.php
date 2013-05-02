@@ -69,4 +69,35 @@ class Gameround
 		}
 		return $gameround;
 	}
+	
+	/**
+	 * Gibt die aktiven Spielrunden zurück
+	 * @return array
+	 */
+	public function getActiveGamerounds()
+	{
+		$entityManager = $this->getEntityManager();
+
+		return $entityManager->getRepository('\DragonJsonServerGameround\Entity\Gameround')
+			->findBy(['active' => true]);
+	}
+	
+	/**
+	 * Triggert ein Tickevent einer Spielrunde an alle Listener
+	 * @param \DragonJsonServerGameround\Entity\Gameround $gameround
+	 * @return Gameround
+	 */
+	public function tickevent(\DragonJsonServerGameround\Entity\Gameround $gameround)
+	{
+		$gameround->setProgress($gameround->getProgress() + 1);
+		$this->getServiceManager()->get('Doctrine')->transactional(function ($entityManager) use ($gameround) {
+			$entityManager->persist($gameround);
+			$entityManager->flush();
+			$this->getEventManager()->trigger(
+				(new \DragonJsonServerGameround\Event\Tickevent())
+					->setTarget($this)
+					->setGameround($gameround)
+			);
+		});
+	}
 }

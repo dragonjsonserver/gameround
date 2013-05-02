@@ -14,6 +14,8 @@ namespace DragonJsonServerGameround;
  */
 class Module
 {
+    use \DragonJsonServer\ServiceManagerTrait;
+    
     /**
      * Gibt die Konfiguration des Moduls zurück
      * @return array
@@ -36,5 +38,23 @@ class Module
                 ],
             ],
         ];
+    }
+    
+    /**
+     * Wird bei der Initialisierung des Moduls aufgerufen
+     * @param \Zend\ModuleManager\ModuleManager $moduleManager
+     */
+    public function init(\Zend\ModuleManager\ModuleManager $moduleManager)
+    {
+    	$sharedManager = $moduleManager->getEventManager()->getSharedManager();
+    	$sharedManager->attach('DragonJsonServerTickevent\Service\Tickevent', 'tickevent', 
+	    	function (\DragonJsonServerTickevent\Event\Tickevent $eventTickevent) {
+	    		$serviceGameround = $this->getServiceManager()->get('Gameround');
+	    		$gamerounds = $serviceGameround->getActiveGamerounds();
+	    		foreach ($gamerounds as $gameround) {
+	    			$serviceGameround->tickevent($gameround);
+	    		}
+	    	}
+    	);
     }
 }

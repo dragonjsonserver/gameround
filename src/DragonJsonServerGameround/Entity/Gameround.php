@@ -36,6 +36,16 @@ class Gameround
 	protected $bot;
 	
 	/**
+	 * @Doctrine\ORM\Mapping\Column(type="integer")
+	 **/
+	protected $progress = 0;
+	
+	/**
+	 * @Doctrine\ORM\Mapping\Column(type="boolean")
+	 **/
+	protected $active = true;
+	
+	/**
 	 * Gibt die ID der Spielrunde zurück
 	 * @return integer
 	 */
@@ -66,7 +76,7 @@ class Gameround
 	
 	/**
 	 * Setzt das Botflag der Spielrunde
-	 * @param boolean $language
+	 * @param boolean $bot
 	 * @return Gameround
 	 */
 	public function setBot($bot)
@@ -85,6 +95,46 @@ class Gameround
 	}
 	
 	/**
+	 * Setzt den Fortschritt der Spielrunde
+	 * @param integer $progress
+	 * @return Gameround
+	 */
+	public function setProgress($progress)
+	{
+		$this->progress = $progress;
+		return $this;
+	}
+	
+	/**
+	 * Gibt den Fortschritt der Spielrunde zurück
+	 * @return integer
+	 */
+	public function getProgress()
+	{
+		return $this->progress;
+	}
+	
+	/**
+	 * Setzt das Activeflag der Spielrunde
+	 * @param boolean $active
+	 * @return Gameround
+	 */
+	public function setActive($active)
+	{
+		$this->active = $active;
+		return $this;
+	}
+	
+	/**
+	 * Gibt das Activeflag der Spielrunde zurück
+	 * @return boolean
+	 */
+	public function getActive()
+	{
+		return $this->active;
+	}
+	
+	/**
 	 * Gibt die Attribute der Spielrunde als Array zurück
 	 * @return array
 	 */
@@ -95,6 +145,8 @@ class Gameround
 			'created' => $this->getCreatedTimestamp(),
 			'language' => $this->getLanguage(),
 			'bot' => $this->getBot(),
+			'progress' => $this->getProgress(),
+			'active' => $this->getActive(),
 		];
 	}
 }

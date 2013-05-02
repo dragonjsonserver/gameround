@@ -3,5 +3,7 @@ CREATE TABLE `gamerounds` (
 	`created` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
 	`language` CHAR(2) NULL,
 	`bot` BOOLEAN NOT NULL,
+	`progress` INTEGER(11) NOT NULL,
+	`active` BOOLEAN NOT NULL,
 	PRIMARY KEY (`gameround_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
