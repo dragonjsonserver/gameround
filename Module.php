@@ -52,7 +52,7 @@ class Module
 	    		$serviceGameround = $this->getServiceManager()->get('Gameround');
 	    		$gamerounds = $serviceGameround->getActiveGamerounds();
 	    		foreach ($gamerounds as $gameround) {
-	    			$serviceGameround->tickevent($gameround);
+	    			$serviceGameround->addProgress($gameround);
 	    		}
 	    	}
     	);

@@ -83,18 +83,19 @@ class Gameround
 	}
 	
 	/**
-	 * Triggert ein Tickevent einer Spielrunde an alle Listener
+	 * Erhöht den Fortschritt einer Spielrunde und triggert die Events
 	 * @param \DragonJsonServerGameround\Entity\Gameround $gameround
+	 * @param integer $progress
 	 * @return Gameround
 	 */
-	public function tickevent(\DragonJsonServerGameround\Entity\Gameround $gameround)
+	public function addProgress(\DragonJsonServerGameround\Entity\Gameround $gameround, $progress = 1)
 	{
-		$gameround->setProgress($gameround->getProgress() + 1);
+		$gameround->setProgress($gameround->getProgress() + $progress);
 		$this->getServiceManager()->get('Doctrine')->transactional(function ($entityManager) use ($gameround) {
 			$entityManager->persist($gameround);
 			$entityManager->flush();
 			$this->getEventManager()->trigger(
-				(new \DragonJsonServerGameround\Event\Tickevent())
+				(new \DragonJsonServerGameround\Event\Progress())
 					->setTarget($this)
 					->setGameround($gameround)
 			);

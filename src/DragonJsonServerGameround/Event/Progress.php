@@ -10,17 +10,17 @@
 namespace DragonJsonServerGameround\Event;
 
 /**
- * Eventklasse für ein Tickevent einer Spielrunde
+ * Eventklasse für die Erhöhung des Fortschritts einer Spielrunde
  */
-class Tickevent extends \Zend\EventManager\Event
+class Progress extends \Zend\EventManager\Event
 {
 	/**
 	 * @var string
 	 */
-	protected $name = 'tickevent';
+	protected $name = 'progress';
 
     /**
-     * Setzt die Spielrunde des Tickevents
+     * Setzt die Spielrunde deren Forschritt erhöht wurde
      * @param \DragonJsonServerGameround\Entity\Gameround $gameround
      * @return Tickevent
      */
@@ -31,7 +31,7 @@ class Tickevent extends \Zend\EventManager\Event
     }
 
     /**
-     * Gibt die Spielrunde des Tickevents zurück
+     * Gibt die Spielrunde deren Forschritt erhöht wurde zurück
      * @return \DragonJsonServerGameround\Entity\Gameround
      */
     public function getGameround()
