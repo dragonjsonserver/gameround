@@ -71,15 +71,16 @@ class Gameround
 	}
 	
 	/**
-	 * Gibt die aktiven Spielrunden zurück
+	 * Gibt die aktiven Spielrunden mit der übergebenen Eventart zurück
+	 * @param string $event
 	 * @return array
 	 */
-	public function getActiveGamerounds()
+	public function getActiveGamerounds($event)
 	{
 		$entityManager = $this->getEntityManager();
 
 		return $entityManager->getRepository('\DragonJsonServerGameround\Entity\Gameround')
-			->findBy(['active' => true]);
+			->findBy(['active' => true, 'event' => $event]);
 	}
 	
 	/**
@@ -88,7 +89,7 @@ class Gameround
 	 * @param integer $progress
 	 * @return Gameround
 	 */
-	public function addProgress(\DragonJsonServerGameround\Entity\Gameround $gameround, $progress = 1)
+	public function addProgress(\DragonJsonServerGameround\Entity\Gameround $gameround, $progress)
 	{
 		$gameround->setProgress($gameround->getProgress() + $progress);
 		$this->getServiceManager()->get('Doctrine')->transactional(function ($entityManager) use ($gameround) {

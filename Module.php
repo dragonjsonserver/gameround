@@ -50,9 +50,9 @@ class Module
     	$sharedManager->attach('DragonJsonServerTickevent\Service\Tickevent', 'tickevent', 
 	    	function (\DragonJsonServerTickevent\Event\Tickevent $eventTickevent) {
 	    		$serviceGameround = $this->getServiceManager()->get('Gameround');
-	    		$gamerounds = $serviceGameround->getActiveGamerounds();
+	    		$gamerounds = $serviceGameround->getActiveGamerounds('tick');
 	    		foreach ($gamerounds as $gameround) {
-	    			$serviceGameround->addProgress($gameround);
+	    			$serviceGameround->addProgress($gameround, 1);
 	    		}
 	    	}
     	);

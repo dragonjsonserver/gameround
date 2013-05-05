@@ -46,6 +46,11 @@ class Gameround
 	protected $active = true;
 	
 	/**
+	 * @Doctrine\ORM\Mapping\Column(type="string")
+	 **/
+	protected $event = 'tick';
+	
+	/**
 	 * Gibt die ID der Spielrunde zurück
 	 * @return integer
 	 */
@@ -135,6 +140,26 @@ class Gameround
 	}
 	
 	/**
+	 * Setzt die Eventart der Spielrunde
+	 * @param string $event
+	 * @return Gameround
+	 */
+	public function setEvent($event)
+	{
+		$this->event = $event;
+		return $this;
+	}
+	
+	/**
+	 * Gibt die Eventart der Spielrunde zurück
+	 * @return string
+	 */
+	public function getEvent()
+	{
+		return $this->event;
+	}
+	
+	/**
 	 * Gibt die Attribute der Spielrunde als Array zurück
 	 * @return array
 	 */
@@ -147,6 +172,7 @@ class Gameround
 			'bot' => $this->getBot(),
 			'progress' => $this->getProgress(),
 			'active' => $this->getActive(),
+			'event' => $this->getEvent(),
 		];
 	}
 }
