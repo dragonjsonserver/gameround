@@ -47,7 +47,7 @@ class Module
     public function init(\Zend\ModuleManager\ModuleManager $moduleManager)
     {
     	$sharedManager = $moduleManager->getEventManager()->getSharedManager();
-    	$sharedManager->attach('DragonJsonServerTickevent\Service\Tickevent', 'tickevent', 
+    	$sharedManager->attach('DragonJsonServerTickevent\Service\Tickevent', 'Tickevent', 
 	    	function (\DragonJsonServerTickevent\Event\Tickevent $eventTickevent) {
 	    		$serviceGameround = $this->getServiceManager()->get('Gameround');
 	    		$gamerounds = $serviceGameround->getActiveGamerounds('tick');

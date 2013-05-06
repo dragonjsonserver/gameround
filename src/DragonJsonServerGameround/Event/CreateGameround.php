@@ -17,7 +17,7 @@ class CreateGameround extends \Zend\EventManager\Event
 	/**
 	 * @var string
 	 */
-	protected $name = 'creategameround';
+	protected $name = 'CreateGameround';
 
     /**
      * Setzt die Spielrunde die erstellt wurde

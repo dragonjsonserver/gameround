@@ -17,7 +17,7 @@ class Progress extends \Zend\EventManager\Event
 	/**
 	 * @var string
 	 */
-	protected $name = 'progress';
+	protected $name = 'Progress';
 
     /**
      * Setzt die Spielrunde deren Forschritt erhöht wurde
