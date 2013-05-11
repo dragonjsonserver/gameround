@@ -166,6 +166,7 @@ class Gameround
 	public function toArray()
 	{
 		return [
+			'entity' => 'Gameround',
 			'gameround_id' => $this->getGameroundId(),
 			'created' => $this->getCreatedTimestamp(),
 			'language' => $this->getLanguage(),
