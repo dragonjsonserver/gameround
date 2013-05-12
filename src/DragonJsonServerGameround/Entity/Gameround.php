@@ -51,6 +51,17 @@ class Gameround
 	protected $event = 'tick';
 	
 	/**
+	 * Setzt die ID der Spielrunde
+	 * @param integer $gameround_id
+	 * @return Gameround
+	 */
+	protected function setGameroundId($gameround_id)
+	{
+		$this->gameround_id = $gameround_id;
+		return $this;
+	}
+	
+	/**
 	 * Gibt die ID der Spielrunde zurück
 	 * @return integer
 	 */
@@ -160,13 +171,30 @@ class Gameround
 	}
 	
 	/**
+	 * Setzt die Attribute der Spielrunde aus dem Array
+	 * @param array $array
+	 * @return Gameround
+	 */
+	public function fromArray(array $array)
+	{
+		return $this
+			->setGameroundId($array['gameround_id'])
+			->setCreatedTimestamp($array['created'])
+			->setLanguage($array['language'])
+			->setBot($array['bot'])
+			->setProgress($array['progress'])
+			->setActive($array['active'])
+			->setEvent($array['event']);
+	}
+	
+	/**
 	 * Gibt die Attribute der Spielrunde als Array zurück
 	 * @return array
 	 */
 	public function toArray()
 	{
 		return [
-			'entity' => 'Gameround',
+			'__className' => __CLASS__,
 			'gameround_id' => $this->getGameroundId(),
 			'created' => $this->getCreatedTimestamp(),
 			'language' => $this->getLanguage(),
