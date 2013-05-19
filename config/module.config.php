@@ -26,7 +26,7 @@ return [
     ],
 	'service_manager' => [
 		'invokables' => [
-            'Gameround' => '\DragonJsonServerGameround\Service\Gameround',
+            '\DragonJsonServerGameround\Service\Gameround' => '\DragonJsonServerGameround\Service\Gameround',
 		],
 	],
 	'doctrine' => [

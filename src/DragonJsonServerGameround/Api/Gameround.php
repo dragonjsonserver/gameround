@@ -26,7 +26,7 @@ class Gameround
 	{
 		$serviceManager = $this->getServiceManager();
 	
-		return $serviceManager->get('Gameround')->getGameround($language, false)->toArray();
+		return $serviceManager->get('\DragonJsonServerGameround\Service\Gameround')->getGameround($language, false)->toArray();
 	}
 	
     /**
@@ -38,6 +38,6 @@ class Gameround
 	{
 		$serviceManager = $this->getServiceManager();
 
-		return $serviceManager->get('Gameround')->getGameround(null, true)->toArray();
+		return $serviceManager->get('\DragonJsonServerGameround\Service\Gameround')->getGameround(null, true)->toArray();
 	}
 }

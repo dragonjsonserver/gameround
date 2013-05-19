@@ -40,7 +40,7 @@ class Gameround
 			$gameround = (new \DragonJsonServerGameround\Entity\Gameround())
 				->setLanguage($language)
 				->setBot($bot);
-			$this->getServiceManager()->get('Doctrine')->transactional(function ($entityManager) use ($gameround) {
+			$this->getServiceManager()->get('\DragonJsonServerDoctrine\Service\Doctrine')->transactional(function ($entityManager) use ($gameround) {
 				$entityManager->persist($gameround);
 				$entityManager->flush();
 				$this->getEventManager()->trigger(
@@ -92,7 +92,7 @@ class Gameround
 	public function addProgress(\DragonJsonServerGameround\Entity\Gameround $gameround, $progress)
 	{
 		$gameround->setProgress($gameround->getProgress() + $progress);
-		$this->getServiceManager()->get('Doctrine')->transactional(function ($entityManager) use ($gameround) {
+		$this->getServiceManager()->get('\DragonJsonServerDoctrine\Service\Doctrine')->transactional(function ($entityManager) use ($gameround) {
 			$entityManager->persist($gameround);
 			$entityManager->flush();
 			$this->getEventManager()->trigger(
