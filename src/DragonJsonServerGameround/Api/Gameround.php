@@ -20,7 +20,6 @@ class Gameround
 	 * Gibt die empfohlene Spielrunde der Sprache zurück
 	 * @param string $language
 	 * @return array
-	 * @DragonJsonServerAccount\Annotation\Session
 	 */
 	public function getGameround($language = null)
 	{
@@ -32,7 +31,6 @@ class Gameround
     /**
 	 * Gibt die empfohlene Spielrunde für Bots zurück
 	 * @return array
-	 * @DragonJsonServerAccount\Annotation\Session
 	 */
 	public function getBotGameround()
 	{
